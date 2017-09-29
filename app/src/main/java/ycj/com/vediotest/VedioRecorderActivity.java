@@ -35,7 +35,7 @@ import java.util.Locale;
 /**
  * UGC小视频录制界面
  */
-public class MainActivity extends Activity implements View.OnClickListener, TXRecordCommon.ITXVideoRecordListener {
+public class VedioRecorderActivity extends Activity implements View.OnClickListener, TXRecordCommon.ITXVideoRecordListener {
 
     private static final String TAG = "TCVideoRecordActivity";
     private boolean mRecording = false;
@@ -308,7 +308,7 @@ public class MainActivity extends Activity implements View.OnClickListener, TXRe
         mTXCameraRecord.setVideoRecordListener(this);
         int result = mTXCameraRecord.startRecord();
         if (result != 0) {
-            Toast.makeText(MainActivity.this.getApplicationContext(), "录制失败，错误码：" + result, Toast.LENGTH_SHORT).show();
+            Toast.makeText(VedioRecorderActivity.this.getApplicationContext(), "录制失败，错误码：" + result, Toast.LENGTH_SHORT).show();
             mTXCameraRecord.setVideoRecordListener(null);
             mTXCameraRecord.stopRecord();
             return;
@@ -394,7 +394,7 @@ public class MainActivity extends Activity implements View.OnClickListener, TXRe
             if (mProgressTime != null) {
                 mProgressTime.setText(String.format(Locale.CHINA, "%s", "00:00"));
             }
-            Toast.makeText(MainActivity.this.getApplicationContext(), "录制失败，原因：" + mTXRecordResult.descMsg, Toast.LENGTH_SHORT).show();
+            Toast.makeText(VedioRecorderActivity.this.getApplicationContext(), "录制失败，原因：" + mTXRecordResult.descMsg, Toast.LENGTH_SHORT).show();
         } else {
 
             if (mRecordProgress != null) {

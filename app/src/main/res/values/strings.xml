@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">VedioTest</string>
+    <string name="video_edit">编辑视频</string>
+    <string name="video_edit_segment">设置想要截取的片段</string>
 </resources>
