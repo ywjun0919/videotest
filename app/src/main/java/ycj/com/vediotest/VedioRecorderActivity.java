@@ -1,6 +1,7 @@
 package ycj.com.vediotest;
 
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -179,11 +181,11 @@ public class VedioRecorderActivity extends Activity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_beauty:
-//                mBeautyPannelView.setVisibility(mBeautyPannelView.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
-//                mRecordRalativeLayout.setVisibility(mBeautyPannelView.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
-//                mProgressTime.setVisibility(mBeautyPannelView.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
-                break;
+//            case R.id.btn_beauty:
+////                mBeautyPannelView.setVisibility(mBeautyPannelView.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
+////                mRecordRalativeLayout.setVisibility(mBeautyPannelView.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
+////                mProgressTime.setVisibility(mBeautyPannelView.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
+//                break;
             case R.id.btn_switch_camera:
 
                 mFront = !mFront;
@@ -195,9 +197,9 @@ public class VedioRecorderActivity extends Activity implements View.OnClickListe
             case R.id.record:
                 switchRecord();
                 break;
-            case R.id.btn_music_pannel:
-                //  mAudioCtrl.setVisibility(View.VISIBLE);
-                break;
+//            case R.id.btn_music_pannel:
+//                //  mAudioCtrl.setVisibility(View.VISIBLE);
+//                break;
             case R.id.btn_confirm:
                 stopRecord(true);
                 break;
@@ -562,21 +564,21 @@ public class VedioRecorderActivity extends Activity implements View.OnClickListe
         if (Build.VERSION.SDK_INT >= 23) {
             List<String> permissions = new ArrayList<String>();
 
-//            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-//                permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-//            }
-//            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)) {
-//                permissions.add(Manifest.permission.CAMERA);
-//            }
-//            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)) {
-//                permissions.add(Manifest.permission.RECORD_AUDIO);
-//            }
-//            if (permissions.size() != 0) {
-//                ActivityCompat.requestPermissions(this,
-//                        permissions.toArray(new String[0]),
-//                        100);
-//                return false;
-//            }
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            }
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)) {
+                permissions.add(Manifest.permission.CAMERA);
+            }
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)) {
+                permissions.add(Manifest.permission.RECORD_AUDIO);
+            }
+            if (permissions.size() != 0) {
+                ActivityCompat.requestPermissions(this,
+                        permissions.toArray(new String[0]),
+                        100);
+                return false;
+            }
         }
 
         return true;
